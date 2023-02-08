@@ -183,6 +183,11 @@
         MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
     }
     
+    if ([MSALGlobalConfig.loggerConfig callback] != nil)
+    {
+        return;
+    }
+    
     [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString * _Nullable message, BOOL containsPII) {
         NSMutableDictionary *logEntry = [[NSMutableDictionary alloc] initWithCapacity:6];
         NSCharacterSet *separators = [NSCharacterSet characterSetWithCharactersInString:@" []"];
